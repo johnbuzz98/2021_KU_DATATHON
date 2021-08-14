@@ -66,14 +66,14 @@ def scholarship_info(data):
     if characteristic_money == 0:
         characteristic_money = "등록금"
     elif characteristic_money == 1:
-        characteristic_money = "그 외"
+        characteristic_money = "지원금"
     elif characteristic_money == 2:
-        characteristic_money = "둘 다"
+        characteristic_money = "등록금 & 지원금"
     recommendation = data[20]
     if recommendation == 0:
-        recommendation = "필요없음"
+        recommendation = "필요하지 않습니다."
     elif recommendation == 1:
-        recommendation = "필요함"
+        recommendation = "필요합니다"
     region = data[21]
     link = data[22]
     date_start = data[23]
