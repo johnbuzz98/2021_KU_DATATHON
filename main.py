@@ -25,7 +25,8 @@ def main_request():
     avg_score = float(request.args.get('avg_score'))
     place = request.args.get('place')
     income = int(request.args.get('income'))
-    semester = int(request.args.get('semester'))
+    semester = request.args.get('semester')
+    semester = (int(semester[0])-1)*2+int(semester[2])
 
     line = [name, age, sex, id_students, major, avg_score, last_score, place, income, semester]
 
