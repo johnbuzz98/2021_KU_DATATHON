@@ -259,7 +259,7 @@ def student_val(line):
 
     st_grade_label = DBSCAN_1(st_grade)
     st_lgrade_label = DBSCAN_2(st_lgrade)
-    st_income_label = DBSCAN_3(income_max)
+    st_income_label = DBSCAN_3(st_income)
 
     return ([st_grade_label, st_lgrade_label, st_income_label])
 
