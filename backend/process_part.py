@@ -234,16 +234,13 @@ def student_val(line):
     grade_min_set = list(set(df['grade_min']))
     grade_min_set = sorted(grade_min_set)
 
-
     # 직전성적은 직전성적의 mincut
     last_grade_min_set = list(set(df['last_grade_min']))
     last_grade_min_set = sorted(last_grade_min_set)
 
-
     # 소득분위는 소득분위의 max cut
     income_max_set = list(set(df['income_max']))
     income_max_set = sorted(income_max_set)
-
 
     # 학생들의 정보가 장학금 column의 값들의 어디에 설정되는지 정의
     # 예를들어 학생의 직전 성적 3.75 면 3.7이 같거나 작은 최대의 수이므로 3.7로 입력됨"""
