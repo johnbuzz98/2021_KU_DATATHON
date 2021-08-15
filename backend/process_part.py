@@ -7,7 +7,7 @@ import os
 def student_info(line):
     conn = sqlite3.connect(os.path.dirname(os.path.abspath(os.path.dirname(__file__))) + "/database/peachtree.db")
     cur = conn.cursor()
-    sql = "INSERT INTO students VALUES('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')"
+    sql = "INSERT OR REPLACE INTO students VALUES('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')"
     cur.execute(sql.format(line[0], line[1], line[2], line[3], line[4], line[5], line[6], line[7], line[8], line[9]))
     conn.commit()
     conn.close()
