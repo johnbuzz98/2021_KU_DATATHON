@@ -73,7 +73,7 @@ cur.execute(
 )
 
 # csv파일 db화
-df = pd.read_csv("dataDB.csv", encoding="cp949")
+df = pd.read_csv("dataDB.csv", encoding="utf-8")
 sql = "INSERT INTO scholarship VALUES('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}'\
 ,'{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')"
 for index, line in df.iterrows():

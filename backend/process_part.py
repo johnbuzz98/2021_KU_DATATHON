@@ -270,8 +270,9 @@ def cos_similarity(x, y, eps=1e-8):
 def similarity_scholarship(student_value, ff_list):
     onehot_column_names = ('labels_1_-1', 'labels_1_0', 'labels_1_1', 'labels_1_2', 'labels_1_3',
                            'labels_2_-1', 'labels_2_0', 'labels_2_1', 'labels_2_2', 'labels_2_3',
-                           'labels_2_4', 'labels_2_5', 'labels_2_6', 'labels_2_7', 'labels_3_0',
-                           'labels_3_1', 'labels_3_2')
+                           'labels_2_4', 'labels_2_5', 'labels_2_6', 'labels_2_7', 'labels_3_-1',
+                           'labels_3_0', 'labels_3_1', 'labels_3_2', 'labels_3_3', 'labels_3_4',
+                           'labels_3_5')
 
     conn = sqlite3.connect(os.path.dirname(os.path.abspath(os.path.dirname(__file__))) + "/database/peachtree.db")
     curs = conn.cursor()

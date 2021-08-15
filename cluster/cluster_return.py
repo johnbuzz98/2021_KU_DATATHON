@@ -5,7 +5,7 @@ from sklearn.cluster import DBSCAN
 import os
 
 data = pd.read_csv(os.path.dirname(os.path.abspath(os.path.dirname(__file__))) + "/database/dataDB.csv",
-                   encoding="cp949")
+                   encoding="utf-8")
 unused_vars = ['id_scholarship', 'scholarship_name', 'link', 'other', 'major', 'region', 'date_start', 'date_end',
                'feature', 'feature_specified',
                'age_max', 'grade_max', 'last_grade_max', 'recommendation', 'year']
@@ -44,8 +44,7 @@ def DBSCAN_3(Y):
     Y = np.array(data_x.tail(1))  # 학생데이터는 따로 떼어줌
     data_x.drop(data_x.tail(1).index, inplace=True)
     X = np.array(data_x)
-    db_ = DBSCAN(eps=0.1, min_samples=20).fit(X)  # DBSCAN 해줌
-
+    db_ = DBSCAN(eps=0.05, min_samples=20).fit(X)  # DBSCAN 해줌
     return db_.fit_predict(Y)[0]  # 학생의 클러스터 추정값 리턴해줌
 
 
@@ -57,7 +56,4 @@ def DBSCAN_4(Y):
     data_x.drop(data_x.tail(1).index, inplace=True)
     X = np.array(data_x)
     db_ = DBSCAN(eps=0.05, min_samples=20).fit(X)  # DBSCAN 해줌
-
     return db_.fit_predict(Y)[0]  # 학생의 클러스터 추정값 리턴해줌
-
-
