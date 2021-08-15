@@ -2,6 +2,7 @@ import sqlite3
 import numpy as np
 import pandas as pd
 import os
+from cluster.cluster_return import DBSCAN_1, DBSCAN_2, DBSCAN_3, DBSCAN_4
 
 
 def student_info(line):
@@ -232,36 +233,20 @@ def student_val(line):
     # 평균성적은 평균성적의 min cut
     grade_min_set = list(set(df['grade_min']))
     grade_min_set = sorted(grade_min_set)
-    '''grade_min_label=[]
-    for _ in grade_min_set:
-        grade_min_label.append(int(df[df['grade_min']==_]['label_1'].head(1)))'''
-    # 계산 복잡도를 줄이기 위해 결과 바로 입력
-    grade_min_label = [2, -1, -1, -1, -1, -1, -1, -1, -1, 3, 3, 3, 3, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-                       1,
-                       -1, -1]
+
 
     # 직전성적은 직전성적의 mincut
     last_grade_min_set = list(set(df['last_grade_min']))
     last_grade_min_set = sorted(last_grade_min_set)
-    '''last_grade_min_label=[]
-    for _ in last_grade_min_set:
-        last_grade_min_label.append(int(df[df['last_grade_min']==_]['label_2'].head(1)))'''
-    # 계산 복잡도를 줄이기 위해 결과 바로 입력
-    last_grade_min_label = [0, -1, -1, -1, -1, -1, 5, 6, -1, 3, 3, 3, 4, 4, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-                            1, 7,
-                            7]
+
 
     # 소득분위는 소득분위의 max cut
     income_max_set = list(set(df['income_max']))
     income_max_set = sorted(income_max_set)
-    '''income_max_label=[]
-    for _ in income_max_set:
-        income_max_label.append(int(df[df['income_max']==_]['label_3'].head(1)))'''
-    # 계산 복잡도를 줄이기 위해 결과 바로 입력
-    income_max_label = [1, 1, 1, 2, 2, 2, 0, 0, 0, 0, 0]
+
 
     # 학생들의 정보가 장학금 column의 값들의 어디에 설정되는지 정의
-    # 예를들어 학생의 직전 성적 3.75 면 3.7이 같거나 작은 최대의 수이므로 3.7로 입력됨
+    # 예를들어 학생의 직전 성적 3.75 면 3.7이 같거나 작은 최대의 수이므로 3.7로 입력됨"""
     for i in grade_min_set:
         if st_grade < i:
             break
@@ -272,9 +257,9 @@ def student_val(line):
         st_lgrade_temp = i
     st_grade, st_lgrade = st_grade_temp, st_lgrade_temp
 
-    st_grade_label = grade_min_label[grade_min_set.index(st_grade)]
-    st_lgrade_label = last_grade_min_label[last_grade_min_set.index(st_lgrade)]
-    st_income_label = income_max_label[income_max_set.index(st_income)]
+    st_grade_label = DBSCAN_1(st_grade)
+    st_lgrade_label = DBSCAN_2(st_lgrade)
+    st_income_label = DBSCAN_3(income_max)
 
     return ([st_grade_label, st_lgrade_label, st_income_label])
 
