@@ -52,7 +52,7 @@ def main_request():
 
 if __name__ == "__main__":
     ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS)
-    ssl_context.load_cert_chain(certfile='peachtree.crt', keyfile='peachtree.key', password=str(input()))
+    ssl_context.load_cert_chain(certfile='server.crt', keyfile='server.key', password=str(input()))
     app.run(debug=False,
             host='0.0.0.0',
             ssl_context=ssl_context
