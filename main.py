@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from flask_restx import Api
 from flask_cors import CORS
 from backend.process_part import student_info, first_filter, student_val, similarity_scholarship, filter_engine
-
+from OpenSSL import SSL
 context = SSL.Context(SSL.SSLv3_METHOD)  ## SSL.Context(SSL.SSLv23_METHOD)
 cert = 'peachtree.crt'
 pkey = 'peachtree.key'
