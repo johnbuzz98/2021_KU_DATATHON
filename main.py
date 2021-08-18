@@ -7,7 +7,8 @@ from OpenSSL import SSL
 context = SSL.Context(SSL.SSLv3_METHOD)  ## SSL.Context(SSL.SSLv23_METHOD)
 cert = 'peachtree.crt'
 pkey = 'peachtree.key'
-context = (cert, pkey)
+context.use_privatekey_file(pkey)
+context.use_certificate_file(cert)
 
 import sqlite3
 import os
