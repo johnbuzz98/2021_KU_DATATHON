@@ -163,7 +163,7 @@ def first_filter(year=2021, id=None):
                            'scholarship_price', 'paybyhour', 'feature_integer', 'feature',
                            'feature_specified', 'other', 'l1', 'l2', 'l3', 'l4', 'l5', 'l6', 'l7', 'l8', 'l9',
                            'l10',
-                           'l11', 'l12', 'l13', 'l14']
+                           'l11', 'l12', 'l13', 'l14', 'l15']
 
     scholarship['date_start'] = pd.to_datetime(scholarship['date_start'])
     scholarship['date_end'] = pd.to_datetime(scholarship['date_end'])
@@ -335,6 +335,11 @@ def filter_engine(ss_list):
     # ai가 추천하는 상위 5개 장학금
     ai_list = ss_list[0:5]
     result_dic.append({"cluster_name": "ai_recommendation", "cluster_contents": cluster_info(ai_list)})
+
+    # ai가 추천하는 사용자와 어울리는 장학금 그룹
+    if scholarship.head(10)["label_15"].value_counts().idxmax() != -1:
+        result_dic.append({"cluster_name": "all_cluster", "cluster_contents": cluster_info(
+            list(np.array(scholarship[scholarship["label_15"] == scholarship.head(10)["label_15"].value_counts().idxmax()]['id_scholarship'].tolist())))})
 
     # feature integer 기준 1:경제상황, 2:개인/가족신분, 3:특정단체,  4:기타, 0: nan 값
     fi_scholarhip = scholarship[scholarship.feature_integer != 0]  # 0 즉 nan 제거
