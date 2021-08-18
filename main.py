@@ -2,6 +2,10 @@ from flask import Flask, request, jsonify
 from flask_restx import Api
 from flask_cors import CORS
 from backend.process_part import student_info, first_filter, student_val, similarity_scholarship, filter_engine
+from OpenSSL import SSL
+context = SSL.Context(SSL.SSLv23_METHOD)
+context.use_privatekey_file('peachtree.key')
+context.use_certificate_file('peachtree.crt')
 import sqlite3
 import os
 
@@ -50,4 +54,6 @@ def main_request():
 
 
 if __name__ == "__main__":
-    app.run(debug=False, host='0.0.0.0')
+    app.run(debug=False,
+            host='0.0.0.0',
+            ssl_context=context)
