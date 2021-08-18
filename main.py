@@ -15,7 +15,7 @@ api = Api(app)
 CORS(app)
 
 ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS)
-ssl_context.load_cert_chain(certfile='peachtree.pem', keyfile='peachtree.key')
+ssl_context.load_cert_chain(certfile='peachtree.crt', keyfile='peachtree.key')
 
 @app.route('/main_request', methods=['GET'])
 def main_request():
