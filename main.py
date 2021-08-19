@@ -50,7 +50,6 @@ def main_request():
 
 
 if __name__ == "__main__":
-    print(ssl_context)
     app.run(debug=False,
             host='0.0.0.0',
             ssl_context='adhoc'
